@@ -1,15 +1,25 @@
 package com.example.mbookstore.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Book {
- //TODO: I should put an ID field here
-    private String title;
-    private String author;
-    private int year;
-    private String isbn;
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
+    private String title, author, isbn;
+    private int year, inventory;
     private double price;
-    private int inventory;
+
+    public Book() {
+    }
 
     public Book(String title, String author, int year, String isbn, double price, int inventory) {
+        super();
         this.title = title;
         this.author = author;
         this.year = year;
@@ -68,6 +78,6 @@ public class Book {
 
     @Override
     public String toString() {
-        return title + author + year + isbn + price + inventory;
+        return id + title + author + year + isbn + price + inventory;
     }
 }

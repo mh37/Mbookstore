@@ -1,7 +1,7 @@
 package com.example.mbookstore.controller;
 
-import com.example.mbookstore.dao.DatabaseApi;
-import com.example.mbookstore.service.DBService;
+
+import com.example.mbookstore.model.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,19 +12,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class BookController {
     @Autowired
-    DBService dbservice;
-    @Autowired
-    DatabaseApi dbApi;
+    private BookRepository repository;
+
     @RequestMapping("/index")
     public String index(Model model) {
-        model.addAttribute("bookList", dbservice.getData());
+        model.addAttribute("bookList", repository.findAll());
         return "index";
     }
     @GetMapping(value = "/deletebook/{booktitle}")
-    public String details(@PathVariable String booktitle, Model model) {
-        System.out.println("booktitle" + booktitle);
-        dbApi.deleteRecord(booktitle);
-        model.addAttribute("bookList", dbservice.getData());
-        return "index";  //TODO: I need to put a redirect here return "redirect:/index";
+    public String deleteBook(@PathVariable String booktitle, Model model) {
+        System.out.println("Deleting booktitle" + booktitle);
+        //dbApi.deleteRecord(booktitle);
+        model.addAttribute("bookList", repository.findAll());
+        return "redirect:/index";
+    }
+
+    @GetMapping(value = "/editbook/{booktitle}")
+    public String editBook(@PathVariable String booktitle, Model model) {
+        System.out.println("Updating booktitle" + booktitle);
+        //dbApi.deleteRecord(booktitle);
+        model.addAttribute("bookList", repository.findAll());
+        return "edit_book";
+    }
+
+    @GetMapping(value = "/newbook")
+    public String newBook(Model model) {
+        model.addAttribute("bookList", repository.findAll());
+        return "new_book";
     }
 }
