@@ -76,8 +76,18 @@ public class Book {
         this.inventory = inventory;
     }
 
+    public Long getId() {return id;}
+
     @Override
     public String toString() {
-        return id + title + author + year + isbn + price + inventory;
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", year=" + year +
+                ", inventory=" + inventory +
+                ", price=" + price +
+                '}';
     }
 }

@@ -7,7 +7,7 @@
 </head>
 <body class="align">
 <h1>Inventory Management Systems</h1>
-<a th:href="@{'/deletebook/'}">Add</a>
+<a th:href="@{'/addbook/'}">Add</a>
 <table id="example" class="table" style="width: 100%">
     <thead>
     <tr>
@@ -29,8 +29,8 @@
         <td th:text="${book.isbn}"></td>
         <td th:text="${book.price}"></td>
         <td th:text="${book.inventory}"></td>
-        <td><a th:href="@{'/deletebook/'+ ${book.title}}">DEL</a></td>
-        <td><a th:href="@{'/editbook/'+ ${book.title}}">EDIT</a></td>
+        <td><a th:href="@{'/deletebook/'+ ${book.id}}">DEL</a></td>
+        <td><a th:href="@{'/editbook/'+ ${book.id}}">EDIT</a></td>
     </tr>
     </tbody>
 </table>
