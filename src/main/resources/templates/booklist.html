@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Bookstore IMS</title>
-    <link rel="stylesheet" th:href="@{/css/table.css}" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
 <body class="align">
 <h1>Inventory Management Systems</h1>
-<a th:href="@{'/addbook/'}">Add</a>
-<table id="example" class="table" style="width: 100%">
+<a th:href="@{'/addbook/'}"><button  class="btn btn-success">Add</button></a>
+<table id="example" class="table table-striped" style="width: 100%">
     <thead>
     <tr>
         <th>Title</th>
@@ -29,8 +29,8 @@
         <td th:text="${book.isbn}"></td>
         <td th:text="${book.price}"></td>
         <td th:text="${book.inventory}"></td>
-        <td><a th:href="@{'/deletebook/'+ ${book.id}}">DEL</a></td>
-        <td><a th:href="@{'/editbook/'+ ${book.id}}">EDIT</a></td>
+        <td><a th:href="@{'/deletebook/'+ ${book.id}}"><button class="btn btn-danger">DELETE</button></a></td>
+        <td><a th:href="@{'/editbook/'+ ${book.id}}"><button  class="btn btn-success">EDIT</button></a></td>
     </tr>
     </tbody>
 </table>
