@@ -8,3 +8,9 @@
     iventory int(6) DEFAULT NULL,
     PRIMARY KEY(book_id)
   );
+
+ CREATE TABLE IF NOT EXISTS category (
+    category_id int(5) NOT NULL AUTO_INCREMENT,
+    name varchar(100) DEFAULT NULL,
+    PRIMARY KEY(category_id)
+  );

@@ -9,7 +9,7 @@
 <h1>Add new book</h1>
 <a th:href="@{'/booklist/'}">Back</a>
 
-<form action="#" th:action="@{/newbook}" th:object="${book}" method="post">
+<form action="#" th:action="@{/savebook}" th:object="${book}" method="post">
     <table>
         <tr>
             <td><label for="title">Title</label></td>
@@ -32,7 +32,7 @@
             <td><input type="text" th:field="*{price}" id="price" placeholder="10.00"></td>
         </tr>
         <tr>
-            <td><label for="author">Inventory</label></td>
+            <td><label for="inventory">Inventory</label></td>
             <td><input type="text" th:field="*{inventory}" id="inventory" placeholder="1"></td>
         </tr>
     </table>

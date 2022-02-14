@@ -24,7 +24,7 @@ public class BookController {
 
     //Delete a book based on the ID
     @GetMapping(value = "/deletebook/{id}")
-    public String deleteBook(@PathVariable("id") long id) {
+    public String deleteBook(@PathVariable("id") Long id) {
         repository.deleteById(id);
         System.out.println("Deleted book: " + id);
         return "redirect:/booklist";
@@ -32,32 +32,27 @@ public class BookController {
 
     //Load the form to edit a book
     @GetMapping(value = "/editbook/{id}")
-    public String editBook(@PathVariable("id") long id, Model model) {
-        System.out.println("Updating Book" + id);
-        Optional<Book> book = repository.findById(id);
-        model.addAttribute("book", book);
+    public String editBook(@PathVariable("id") Long bookId, Model model) {
+        model.addAttribute("book", repository.findById(bookId));
+        //model.addAttribute("departments", drepository.findAll());
         return "editbook";
     }
 
-    @PostMapping("/updatebook")
-    public String updateBook(Book book, Model model) {
-        repository.save(book);
-        System.out.println("Updated Book " + book.getId() + "New Values: " +book.toString());
-        return "redirect:/booklist";
-    }
-
-
-    //Load the form to create a new book
-    @GetMapping(value = "/addbook")
-    public String addBook(Book book, Model model) {
+    // Load the form to add a book
+    @RequestMapping(value = "/addbook")
+    public String addBook(Model model){
+        model.addAttribute("book", new Book());
+        //model.addAttribute("departments", drepository.findAll());
         return "addbook";
     }
 
-    //Creating and saving a new book
-    @PostMapping("/newbook")
+    //saving a book
+    @PostMapping("/savebook")
     public String newBook(Book book, Model model){
         repository.save(book);
         System.out.println("Created book:" + book.toString());
         return "redirect:/booklist";
     }
+
+
 }

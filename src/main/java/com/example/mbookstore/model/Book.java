@@ -1,9 +1,6 @@
 package com.example.mbookstore.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Book {
@@ -15,10 +12,14 @@ public class Book {
     private int year, inventory;
     private double price;
 
+    @ManyToOne
+    @JoinColumn(name = "categoryid")
+    private Category category;
+
     public Book() {
     }
 
-    public Book(String title, String author, int year, String isbn, double price, int inventory) {
+    public Book(String title, String author, int year, Category category, String isbn, double price, int inventory) {
         super();
         this.title = title;
         this.author = author;
@@ -76,7 +77,21 @@ public class Book {
         this.inventory = inventory;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
     public Long getId() {return id;}
+
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+
 
     @Override
     public String toString() {
@@ -86,6 +101,7 @@ public class Book {
                 ", author='" + author + '\'' +
                 ", isbn='" + isbn + '\'' +
                 ", year=" + year +
+                ", category=" + this.getCategory() +
                 ", inventory=" + inventory +
                 ", price=" + price +
                 '}';
