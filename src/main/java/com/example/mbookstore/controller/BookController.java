@@ -3,6 +3,7 @@ package com.example.mbookstore.controller;
 
 import com.example.mbookstore.model.Book;
 import com.example.mbookstore.model.BookRepository;
+import com.example.mbookstore.model.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,8 @@ import java.util.Optional;
 public class BookController {
     @Autowired
     private BookRepository repository;
+    @Autowired
+    private CategoryRepository crepository;
 
     //Show a list of all books
     @RequestMapping("/booklist")
@@ -34,7 +37,7 @@ public class BookController {
     @GetMapping(value = "/editbook/{id}")
     public String editBook(@PathVariable("id") Long bookId, Model model) {
         model.addAttribute("book", repository.findById(bookId));
-        //model.addAttribute("departments", drepository.findAll());
+        model.addAttribute("categories", crepository.findAll());
         return "editbook";
     }
 
@@ -42,7 +45,7 @@ public class BookController {
     @RequestMapping(value = "/addbook")
     public String addBook(Model model){
         model.addAttribute("book", new Book());
-        //model.addAttribute("departments", drepository.findAll());
+        model.addAttribute("categories", crepository.findAll());
         return "addbook";
     }
 

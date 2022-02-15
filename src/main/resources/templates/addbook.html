@@ -21,7 +21,15 @@
         </tr>
         <tr>
             <td><label for="year">Year</label></td>
-            <td><input type="text" th:field="*{year}" id="year" placeholder="2020"></td>
+            <td><input type="text" th:field="*{year}" id="year" placeholder="Year"></td>
+        </tr>
+        <tr>
+            <td><label for="category">Category</label></td>
+            <td>
+                <select id="category" th:field="*{category}" class="form-control">
+                    <option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.name}"></option>
+                </select>
+            </td>
         </tr>
         <tr>
             <td><label for="isbn">ISBN</label></td>
@@ -29,11 +37,11 @@
         </tr>
         <tr>
             <td><label for="price">Price</label></td>
-            <td><input type="text" th:field="*{price}" id="price" placeholder="10.00"></td>
+            <td><input type="text" th:field="*{price}" id="price" placeholder="Price"></td>
         </tr>
         <tr>
             <td><label for="inventory">Inventory</label></td>
-            <td><input type="text" th:field="*{inventory}" id="inventory" placeholder="1"></td>
+            <td><input type="text" th:field="*{inventory}" id="inventory" placeholder="Amount"></td>
         </tr>
     </table>
 

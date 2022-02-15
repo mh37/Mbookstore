@@ -25,6 +25,14 @@
             <td><input type="text" th:field="*{year}" id="year" placeholder="2020"></td>
         </tr>
         <tr>
+            <td><label for="category">Category</label></td>
+            <td>
+                <select id="category" th:field="*{category}" class="form-control">
+                    <option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.name}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
             <td><label for="isbn">ISBN</label></td>
             <td><input type="text" th:field="*{isbn}" id="isbn" placeholder="ISBN"></td>
         </tr>
