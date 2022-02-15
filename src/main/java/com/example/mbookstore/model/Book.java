@@ -25,6 +25,7 @@ public class Book {
         this.author = author;
         this.year = year;
         this.isbn = isbn;
+        this.category = category;
         this.price = price;
         this.inventory = inventory;
     }
