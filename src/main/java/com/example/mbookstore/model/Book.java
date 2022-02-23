@@ -3,6 +3,7 @@ package com.example.mbookstore.model;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Book {
@@ -96,6 +97,21 @@ public class Book {
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o)
+            return true;
+        if (!(o instanceof Book book))
+            return false;
+        return Objects.equals(this.id, book.id) && Objects.equals(this.title, book.title)
+                && Objects.equals(this.author, book.author);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.id, this.title, this.author);
+    }
 
     @Override
     public String toString() {

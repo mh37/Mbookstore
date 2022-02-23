@@ -26,19 +26,6 @@ public class BookController {
         return "booklist";
     }
 
-
-    // REST to get all the books
-    @RequestMapping(value="/books", method = RequestMethod.GET)
-    public @ResponseBody List<Book> bookListRest() {
-        return (List<Book>) repository.findAll();
-    }
-
-    // REST to get a book by id
-    @RequestMapping(value="/book/{id}", method = RequestMethod.GET)
-    public @ResponseBody Optional<Book> findBookRest(@PathVariable("id") Long bookId) {
-        return repository.findById(bookId);
-    }
-
     //Delete a book based on the ID
     @GetMapping(value = "/deletebook/{id}")
     public String deleteBook(@PathVariable("id") Long id) {
@@ -71,5 +58,23 @@ public class BookController {
         return "redirect:/booklist";
     }
 
+
+    //RESTful to get all the books
+    @RequestMapping(value="/books", method = RequestMethod.GET)
+    public @ResponseBody List<Book> bookListRest() {
+        return (List<Book>) repository.findAll();
+    }
+
+    //RESTful to get a book by id
+    @RequestMapping(value="/book/{id}", method = RequestMethod.GET)
+    public @ResponseBody Optional<Book> findBookRest(@PathVariable("id") Long bookId) {
+        return repository.findById(bookId);
+    }
+
+    //RESTful to search a book/s by title
+    @RequestMapping(value="/search/{title}", method = RequestMethod.GET)
+    public @ResponseBody List<Book> findTitleRest(@PathVariable("title") String title) {
+        return (List<Book>) repository.findByTitle(title);
+    }
 
 }
