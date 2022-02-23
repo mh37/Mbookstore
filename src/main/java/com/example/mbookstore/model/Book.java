@@ -1,5 +1,7 @@
 package com.example.mbookstore.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +16,7 @@ public class Book {
 
     @ManyToOne
     @JoinColumn(name = "categoryid")
+    @JsonManagedReference
     private Category category;
 
     public Book() {

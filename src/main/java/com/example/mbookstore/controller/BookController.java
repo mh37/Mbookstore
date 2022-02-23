@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -23,6 +24,19 @@ public class BookController {
     public String showList(Model model) {
         model.addAttribute("bookList", repository.findAll());
         return "booklist";
+    }
+
+
+    // REST to get all the books
+    @RequestMapping(value="/books", method = RequestMethod.GET)
+    public @ResponseBody List<Book> bookListRest() {
+        return (List<Book>) repository.findAll();
+    }
+
+    // REST to get a book by id
+    @RequestMapping(value="/book/{id}", method = RequestMethod.GET)
+    public @ResponseBody Optional<Book> findBookRest(@PathVariable("id") Long bookId) {
+        return repository.findById(bookId);
     }
 
     //Delete a book based on the ID
