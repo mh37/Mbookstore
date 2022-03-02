@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+
+
 @Controller
 public class BookController {
     @Autowired
@@ -58,6 +60,7 @@ public class BookController {
         return "redirect:/booklist";
     }
 
+//----------------------------All the REST stuff is down here -----------------------------------
 
     //RESTful to get all the books
     @RequestMapping(value="/books", method = RequestMethod.GET)
@@ -76,5 +79,21 @@ public class BookController {
     public @ResponseBody List<Book> findTitleRest(@PathVariable("title") String title) {
         return (List<Book>) repository.findByTitle(title);
     }
+
+    //Delete a book based on the ID
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public @ResponseBody String delete(@PathVariable("id") Long id) {
+        repository.deleteById(id);
+        return "{\"success\":\"true\"}";
+    }
+
+    //Adding a book
+    @RequestMapping(value = "/add", method = RequestMethod.PUT)
+    public @ResponseBody String add(Model model){
+        model.addAttribute("book", new Book());
+        model.addAttribute("categories", crepository.findAll());
+        return "{\"success\":\"true\"}";
+    }
+
 
 }
