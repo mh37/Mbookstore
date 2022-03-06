@@ -6,7 +6,15 @@
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
 <body class="align">
-<h1>Inventory Management Systems</h1>
+<div class="container">
+
+    <p th:inline="text">[[${#httpServletRequest.remoteUser}]]</p>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+    </form>
+
+    <h1>Inventory Management Systems</h1>
+
 <a th:href="@{'/addbook/'}"><button  class="btn btn-success">Add Book</button></a>
 <table id="example" class="table table-striped" style="width: 100%">
     <thead>
@@ -36,5 +44,6 @@
     </tr>
     </tbody>
 </table>
+</div>
 </body>
 </html>
