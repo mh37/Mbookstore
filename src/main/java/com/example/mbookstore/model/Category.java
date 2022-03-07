@@ -10,6 +10,7 @@ public class Category {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long categoryid;
+    @Column(name = "name", nullable = false, unique = true)
     private String name;
 
     @JsonIgnore
