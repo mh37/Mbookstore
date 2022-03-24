@@ -1,6 +1,5 @@
-package com.example.mbookstore;
+package com.example.mbookstore.controller;
 
-import com.example.mbookstore.controller.BookController;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
@@ -10,18 +9,21 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-class MbookstoreApplicationTests {
+class UserDetailServiceImplTest {
 
-	@Autowired
-	private BookController bcontroller;
+    @Autowired
+    private UserDetailServiceImpl udsImp;
 
 
-	@Test
-	public void contextLoads() throws Exception {
-		assertThat(bcontroller).isNotNull();
-	}
-
+    @Test
+    public void contextLoads() throws Exception {
+        assertThat(udsImp).isNotNull();
+    }
+    @Test
+    void loadUserByUsername() {
+    }
 }
