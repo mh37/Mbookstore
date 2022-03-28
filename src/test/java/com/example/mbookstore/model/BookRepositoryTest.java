@@ -1,4 +1,4 @@
-package com.example.mbookstore;
+package com.example.mbookstore.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,42 +21,30 @@ import java.util.List;
 class BookRepositoryTest {
 
     @Autowired
-    private TestEntityManager entityManager;
-
-    @Autowired
     private BookRepository repository;
 
     @Test
     public void saveBook() {
         Book book = new Book("This is a Book", "John Johnson", 2020, new Category("Test"),"ISBN3838383",20.00,11);
-        entityManager.persistAndFlush(book);
+        repository.save(book);
         assertThat(book.getId()).isNotNull();
     }
 
     @Test
     public void deleteBooks() {
-        entityManager.persistAndFlush(new Book("This is a Book", "John Johnson", 2020, new Category("Test"),"ISBN3838383",20.00,11));
-        entityManager.persistAndFlush(new Book("This is also a Book", "John Johnson", 2021, new Category("Testing"),"ISBN3111383",10.00,1));
-        repository.deleteAll();
-        assertThat(repository.findAll()).isEmpty();
+        Book book = new Book("Test Book", "John Johnson", 2020, new Category("Test"),"ISBN3838383",20.00,11);
+        repository.save(book);
+        repository.delete(book);
+        List<Book> newBooks = repository.findByTitle("Test Book");
+        assertThat(newBooks).hasSize(0);
     }
 
-
-
-
-
-
     @Test
-    public void findByTitleShouldReturnBook() {
-        List<Book> books = repository.findByTitle("Test");
+    public void searchBook() {
+        List<Book> books = repository.findByTitle("Testing Tests");
         assertThat(books).hasSize(1);
-        assertThat(books.get(0).getTitle()).isEqualTo("Test");
+        assertThat(books.get(0).getTitle()).isEqualTo("Testing Tests");
     }
-
-    @Test
-    void findByTitle() {
-    }
-
 }
 
 
