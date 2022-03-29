@@ -5,7 +5,7 @@
     year int(5) DEFAULT NULL,
     isbn varchar(22) DEFAULT NULL,
     price float DEFAULT NULL,
-    iventory int(6) DEFAULT NULL,
+    inventory int(6) DEFAULT NULL,
     PRIMARY KEY(book_id)
   );
 
