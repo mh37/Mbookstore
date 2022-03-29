@@ -17,9 +17,9 @@ public class MbookstoreApplication{
 	@Bean
 	CommandLineRunner runner(BookRepository repository, CategoryRepository crepository, UserRepository urepository) {
 		return args -> {
-			crepository.save(new Category("Horror"));
-			crepository.save(new Category("Sci-Fi"));
-			crepository.save(new Category("History"));
+			//crepository.save(new Category("Horror"));
+			//crepository.save(new Category("Sci-Fi"));
+			//crepository.save(new Category("History"));
 
 			//for (Category c : crepository.findAll()) {
 			//	System.out.println(c.toString());
@@ -32,9 +32,9 @@ public class MbookstoreApplication{
 
 			// Create users: admin/admin user/user
 			//User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
-			User user2 = new User("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
+			//User user2 = new User("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
 			//urepository.save(user1);
-			urepository.save(user2);
+			//urepository.save(user2);
 
 			//for (Book b : repository.findAll()) {
 			//	System.out.println(b.toString());
