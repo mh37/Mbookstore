@@ -26,9 +26,9 @@ public class MbookstoreApplication{
 			//}
 
 
-			repository.save(new Book("Testing Tests","John Tester",2000,crepository.findByName("Horror").get(0),"978-3-16-148410-0",20.00,10));
-			repository.save(new Book("Testers Tests","Frank Tester",2020,crepository.findByName("History").get(0),"971-3-17-148510-0",29.90,100));
-			repository.save(new Book("Test of all Tests","Peter Testerman",2021,crepository.findByName("Sci-Fi").get(0),"971-3-17-158511-0",25.95,40));
+			//repository.save(new Book("Testing Tests","John Tester",2000,crepository.findByName("Horror").get(0),"978-3-16-148410-0",20.00,10));
+			//repository.save(new Book("Testers Tests","Frank Tester",2020,crepository.findByName("History").get(0),"971-3-17-148510-0",29.90,100));
+			//repository.save(new Book("Test of all Tests","Peter Testerman",2021,crepository.findByName("Sci-Fi").get(0),"971-3-17-158511-0",25.95,40));
 
 			// Create users: admin/admin user/user
 			User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
