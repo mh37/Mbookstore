@@ -29,7 +29,7 @@ public class BookController {
     }
 
     //Show a list of all books
-    @RequestMapping("/booklist")
+    @RequestMapping("*")
     public String showList(Model model) {
         model.addAttribute("bookList", repository.findAll());
         return "booklist";
